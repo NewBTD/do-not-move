@@ -52,7 +52,6 @@ function Shake({ setShakeCount, shakeCount, handleExeCount }: any) {
   }, [motion1, motion2.current]);
 
   const handleRequestMotion = async () => {
-    // window.navigator.vibrate(200);
     const mobile = getMobileOperatingSystem();
     if (mobile === "iOS") {
       if (typeof (DeviceMotionEvent as any).requestPermission === "function") {
@@ -67,6 +66,7 @@ function Shake({ setShakeCount, shakeCount, handleExeCount }: any) {
                   z: e.accelerationIncludingGravity.z,
                 });
               });
+              window.navigator.vibrate(200);
             }
           })
           .catch(console.error);
